@@ -119,5 +119,5 @@ async def post_audio(file: UploadFile = File(...)):
     # Use for Post: Return output audio
     return StreamingResponse(iterfile(), media_type="application/octet-stream")
 
-if __name__ == "__main__":
-    uvicorn.run(app, host='0.0.0.0', port=8000)
+#if __name__ == "__main__":
+#   uvicorn.run(app, host='0.0.0.0', port=8000)
