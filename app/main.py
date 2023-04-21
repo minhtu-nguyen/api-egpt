@@ -10,9 +10,9 @@ app = FastAPI()
 
 
 #Functions
-from functions.openai_requests import convert_audio_to_text, get_chat_response
-from functions.database import store_messages, reset_messages
-from functions.text_to_speech import convert_text_to_speech
+from app.openai_requests import convert_audio_to_text, get_chat_response
+from app.database import store_messages, reset_messages
+from app.text_to_speech import convert_text_to_speech
 
 '''
     "http://localhost:5173",

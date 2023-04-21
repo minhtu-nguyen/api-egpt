@@ -10,7 +10,7 @@ load_dotenv(dotenv_path=dotenv_path)
 openai.organization = os.getenv("OPEN_AI_ORG")
 openai.api_key = os.getenv("OPEN_AI_KEY")
 
-from functions.database import get_recent_messages
+from app.database import get_recent_messages
 
 #Audio to Text
 def convert_audio_to_text(audio_file):
