@@ -1,6 +1,7 @@
 fastapi
 uvicorn
 openai
+python-decouple
 python-dotenv
 python-multipart==0.0.6
 requests==2.28.2

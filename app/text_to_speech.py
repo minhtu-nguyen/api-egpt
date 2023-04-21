@@ -1,13 +1,13 @@
 import os
 import requests
-#from decouple import config
-from dotenv import load_dotenv
+from decouple import config
+#from dotenv import load_dotenv
 from pathlib import Path
 
-dotenv_path = Path('../.env')
-load_dotenv(dotenv_path=dotenv_path)
+#dotenv_path = Path('.env')
+#load_dotenv(dotenv_path=dotenv_path)
 
-ELEVEN_LABS_API_KEY = os.getenv("ELEVEN_LABS_API_KEY")
+ELEVEN_LABS_API_KEY = config("ELEVEN_LABS_API_KEY")
 
 # Eleven Labs
 # Convert text to speech

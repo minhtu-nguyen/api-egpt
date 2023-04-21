@@ -1,16 +1,16 @@
 import os
 import openai
-#from decouple import config
-from dotenv import load_dotenv
+from decouple import config
+#from dotenv import load_dotenv
 from pathlib import Path
 
-dotenv_path = Path('../.env')
-load_dotenv(dotenv_path=dotenv_path)
+#dotenv_path = Path('')
+#load_dotenv(dotenv_path=dotenv_path)
 
-openai.organization = os.getenv("OPEN_AI_ORG")
-openai.api_key = os.getenv("OPEN_AI_KEY")
+openai.organization = config("OPEN_AI_ORG")
+openai.api_key = config("OPEN_AI_KEY")
 
-from app.database import get_recent_messages
+from database import get_recent_messages
 
 #Audio to Text
 def convert_audio_to_text(audio_file):
