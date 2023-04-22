@@ -3,6 +3,11 @@ services:
   backend:
     build: ./
     restart: always
+    ports:
+    # Listen on port 80, default for HTTP, necessary to redirect to HTTPS
+    - 80:80
+    # Listen on port 443, default for HTTPS
+    - 443:443
     labels:
       # Enable Traefik for this specific "backend" service
       - traefik.enable=true
@@ -10,12 +15,12 @@ services:
       - traefik.http.services.app.loadbalancer.server.port=80
       # Make Traefik use this domain in HTTP
       - traefik.http.routers.app-http.entrypoints=http
-      - traefik.http.routers.app-http.rule=Host(`fastapi-with-traefik.example.com`)
+      - traefik.http.routers.app-http.rule=Host(`egpt.minhtu-nguyen.dev`)
       # Use the traefik-public network (declared below)
       - traefik.docker.network=traefik-public
       # Make Traefik use this domain in HTTPS
       - traefik.http.routers.app-https.entrypoints=https
-      - traefik.http.routers.app-https.rule=Host(`fastapi-with-traefik.example.com`)
+      - traefik.http.routers.app-https.rule=Host(`egpt.minhtu-nguyen.com`)
       - traefik.http.routers.app-https.tls=true
       # Use the "le" (Let's Encrypt) resolver
       - traefik.http.routers.app-https.tls.certresolver=le
@@ -24,7 +29,6 @@ services:
       - traefik.http.middlewares.https-redirect.redirectscheme.permanent=true
       # Middleware to redirect HTTP to HTTPS
       - traefik.http.routers.app-http.middlewares=https-redirect
-      - traefik.http.routers.app-https.middlewares=admin-auth
     networks:
       # Use the public network created to be shared between Traefik and
       # any other service that needs to be publicly available with HTTPS
